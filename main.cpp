@@ -1,28 +1,62 @@
-#include <stdio.h>
+#include <cstdio>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 
-int main(int argc, char **argv){
+#include "inputcatcher.h"
+#include "engine.h"
+#include "renderer.h"
+#include "global_constants.h"
 
-   ALLEGRO_DISPLAY *display = NULL;
+long int getmillisec();
 
-   if(!al_init()) {
-      fprintf(stderr, "failed to initialize allegro!\n");
-      return -1;
-   }
+int main(int argc, char **argv)
+{
+    // Initialize Allegro
+    if (!al_init())
+    {
+        fprintf(stderr, "Fatal Error: Allegro initialization failed!\n");
+        return -1;
+    }
 
-   display = al_create_display(640, 480);
-   if(!display) {
-      fprintf(stderr, "failed to create display!\n");
-      return -1;
-   }
+    // Initialize the Allegro Image addon, used to load sprites and maps
+    if (!al_init_image_addon())
+    {
+        fprintf(stderr, "Fatal Error: Allegro Image Addon initialization failed!\n");
+        return -1;
+    }
 
-   al_clear_to_color(al_map_rgb(0,0,0));
+    InputCatcher *inputcatcher;
+    Engine *engine;
+    Renderer *renderer;
 
-   al_flip_display();
+    try
+    {
+        // Initialize everything
+        // The various allegro initializations can throw errors
+        engine = new Engine();
+        renderer = new Renderer();
+        inputcatcher = new InputCatcher(renderer->display);
+    }
+    catch (int e)
+    {
+        if (e == -1)
+        {
+            fprintf(stderr, "\nAllegro initialization failed.");
+        }
+        else
+        {
+            fprintf(stderr, "\nUNKNOWN ERROR HAPPENED");
+        }
+        return -1;
+    }
 
-   al_rest(10.0);
+    engine->loadmap("maps/conflict.png");
 
-   al_destroy_display(display);
-
-   return 0;
+    while (true)
+    {
+        inputcatcher->run(engine, renderer);
+        engine->run();
+        renderer->render(engine->currentstate);
+    }
+    return 0;
 }

@@ -6,22 +6,42 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="">
-				<Option output="bin/Coverguard" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/" />
+			<Target title="default">
+				<Option output="Coverguard" prefix_auto="1" extension_auto="1" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wshadow" />
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add directory="include" />
 		</Compiler>
+		<Linker>
+			<Add library="allegro" />
+			<Add library="allegro_image" />
+		</Linker>
+		<Unit filename="include/engine.h" />
+		<Unit filename="include/entity.h" />
+		<Unit filename="include/gamestate.h" />
+		<Unit filename="include/global_constants.h" />
+		<Unit filename="include/inputcatcher.h" />
+		<Unit filename="include/json.hpp" />
+		<Unit filename="include/map.h" />
+		<Unit filename="include/movingentity.h" />
+		<Unit filename="include/renderer.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/engine.cpp" />
+		<Unit filename="src/gamestate.cpp" />
+		<Unit filename="src/inputcatcher.cpp" />
+		<Unit filename="src/map.cpp" />
+		<Unit filename="src/movingentity.cpp" />
+		<Unit filename="src/renderer.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
