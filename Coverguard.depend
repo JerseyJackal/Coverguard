@@ -92,3 +92,61 @@
 	<movingentity.h>
 	<global_constants.h>
 
+1464925048 source:c:\users\john\desktop\coverguard\src\gamestate.cpp
+	<vector>
+	<memory>
+	"gamestate.h"
+	"engine.h"
+	"entity.h"
+
+1464925048 c:\users\john\desktop\coverguard\include\gamestate.h
+	<vector>
+	<memory>
+	"entity.h"
+	"map.h"
+
+1464925048 c:\users\john\desktop\coverguard\include\entity.h
+	<vector>
+
+1464929883 c:\users\john\desktop\coverguard\include\map.h
+	"entity.h"
+	<allegro5/allegro.h>
+	<string>
+
+1464929883 c:\users\john\desktop\coverguard\include\engine.h
+	<string.h>
+	"gamestate.h"
+
+1464925048 source:c:\users\john\desktop\coverguard\src\inputcatcher.cpp
+	<allegro5/allegro.h>
+	<cstdio>
+	"inputcatcher.h"
+	"engine.h"
+	"renderer.h"
+
+1464925048 c:\users\john\desktop\coverguard\include\inputcatcher.h
+	<allegro5/allegro.h>
+	"engine.h"
+	"renderer.h"
+
+1464925048 c:\users\john\desktop\coverguard\include\renderer.h
+	"gamestate.h"
+	<allegro5/allegro.h>
+
+1464925048 source:c:\users\john\desktop\coverguard\src\movingentity.cpp
+	"movingentity.h"
+	"gamestate.h"
+	"entity.h"
+
+1464925048 c:\users\john\desktop\coverguard\include\movingentity.h
+	"entity.h"
+	"gamestate.h"
+
+1464925048 source:c:\users\john\desktop\coverguard\src\renderer.cpp
+	<allegro5/allegro.h>
+	<cstdio>
+	"renderer.h"
+	"global_constants.h"
+
+1464925048 c:\users\john\desktop\coverguard\include\global_constants.h
+
